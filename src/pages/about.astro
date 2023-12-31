@@ -1,5 +1,20 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const pageTitle = "About Me";
 
+const identify = {
+  firstName: "Massan",
+  country: "Japan",
+  occupation: "ojisan",
+  hobbies: ["photograpy", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript"];
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="ja">
@@ -8,14 +23,40 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>About</title>
+    <title>{pageTitle}</title>
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <h1>About This Site</h1>
+    <Header />
+    <h1>{pageTitle}</h1>
     <p>このサイトはAstroのチュートリアルを実践していくサイトです。</p>
     <p>中身はとくに考えていません。これはaboutページです。</p>
+    <ul>
+      <li>My name is: {identify.firstName}</li>
+      <li>I live in {identify.country}.</li>
+      {
+        identify.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {identify.hobbies[0]} and{" "}
+            {identify.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>My Skills are:</p>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    <Footer />
   </body>
 </html>
