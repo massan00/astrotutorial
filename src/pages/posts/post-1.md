@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: 最初のブログ
 pubDate: 2023-12-30
 description: これは最初のブログです
@@ -13,8 +14,6 @@ tags: ["astro", "blogging", "learning in public"]
 
 チュートリアルでブログ作成。
 ここからはうつのダルからコピペ
-
-Published on: 2022-07-01
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 
